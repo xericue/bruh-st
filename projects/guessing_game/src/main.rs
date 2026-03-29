@@ -20,8 +20,10 @@ fn main() {
             .read_line(&mut guess)
             .expect("Failed to read line");
 
-        let guess: u32 = guess.trim().parse().expect("dawg type a number...");
-
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num, // match first arm, return this num value
+            Err(_) => continue,
+        };
     
         println!("You guessed: {guess}");
 
